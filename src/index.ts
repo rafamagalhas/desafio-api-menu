@@ -2,7 +2,7 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 dotenv.config()
 import mongoose from 'mongoose'
-
+import morgan from 'morgan'
 
 import userRoutes from './routes/user'
 import healthzRoutes from './routes/healthz'
@@ -25,10 +25,11 @@ mongoose.connect(
 const app = express()
 
 app.use(express.json())
+app.use(morgan('tiny'))
 
 app.use('/user', userRoutes)
 app.use('/health', healthzRoutes)
 
 app.listen(PORT, () => {
-    console.log(`${LOGMSG} Serconst connection: Connection;ver is running at ${HOST}:${PORT}`)
+    console.log(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
 })
