@@ -6,6 +6,7 @@ import morgan from 'morgan'
 
 import userRoutes from './routes/user'
 import healthzRoutes from './routes/healthz'
+import menuRoutes from './routes/menu'
 
 const HOST = process.env.HOST || 'https://localhost'
 const PORT = process.env.PORT || 8000
@@ -29,6 +30,7 @@ app.use(morgan('tiny'))
 
 app.use('/user', userRoutes)
 app.use('/health', healthzRoutes)
+app.use('/menu', menuRoutes)
 
 app.listen(PORT, () => {
     console.log(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
