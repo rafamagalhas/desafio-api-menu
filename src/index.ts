@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 import mongoose from 'mongoose'
 import morgan from 'morgan'
+import { routes } from './routes'
 
 import userRoutes from './routes/user'
 import healthzRoutes from './routes/healthz'
@@ -28,9 +29,12 @@ const app = express()
 app.use(express.json())
 app.use(morgan('tiny'))
 
-app.use('/user', userRoutes)
-app.use('/health', healthzRoutes)
-app.use('/menu', menuRoutes)
+
+app.use('/api/v1', routes);
+
+// app.use('/user', userRoutes)
+// app.use('/health', healthzRoutes)
+// app.use('/menu', menuRoutes)
 
 app.listen(PORT, () => {
     console.log(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
