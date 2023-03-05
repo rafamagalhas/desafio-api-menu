@@ -1,9 +1,7 @@
-import express from 'express'
+import app from './app';
 import * as dotenv from 'dotenv'
 dotenv.config()
 import mongoose from 'mongoose'
-import morgan from 'morgan'
-import { routes } from './routes'
 
 const HOST = process.env.HOST || 'https://localhost'
 const PORT = process.env.PORT || 8000
@@ -19,14 +17,6 @@ mongoose.connect(
         console.log(msg)
     },
 )
-
-const app = express()
-
-app.use(express.json())
-app.use(morgan('tiny'))
-
-
-app.use('/api/v1', routes);
 
 app.listen(PORT, () => {
     console.log(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
