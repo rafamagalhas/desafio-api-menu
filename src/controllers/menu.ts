@@ -22,12 +22,16 @@ export default {
     try {
       const menus = await Menu.find({})
 
-      if (menus.length === 0) {
+      let menusParsed: any;
+      if (menus.length > 0) {
+        menusParsed = menuTreeCompose(JSON.parse(JSON.stringify(menus)))
+      }
+
+      if (menus.length === 0 || menusParsed.length === 0) {
         logger.info('Menu list was not found')
         return res.status(404).json({ message: 'Menu list not found' })
       }
 
-      const menusParsed = menuTreeCompose(JSON.parse(JSON.stringify(menus)))
       return res.status(StatusCodes.OK).json(menusParsed)
     } catch (error: any) {
       logger.error('Error: ', error)
