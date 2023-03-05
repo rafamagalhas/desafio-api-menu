@@ -1,3 +1,4 @@
+import { logger } from './utils/winston';
 import app from './app';
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -14,10 +15,10 @@ mongoose.connect(
         const msg = err
             ? `${LOGMSG} Failed to connect to MongoDB: ${err}`
             : `${LOGMSG} MongoDB connection established successfully`
-        console.log(msg)
+        logger.info(msg)
     },
 )
 
 app.listen(PORT, () => {
-    console.log(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
+    logger.info(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
 })
