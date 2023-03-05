@@ -1,9 +1,8 @@
-import express from 'express'
+import { logger } from './utils/winston';
+import app from './app';
 import * as dotenv from 'dotenv'
 dotenv.config()
 import mongoose from 'mongoose'
-import morgan from 'morgan'
-import { routes } from './routes'
 
 const HOST = process.env.HOST || 'https://localhost'
 const PORT = process.env.PORT || 8000
@@ -16,18 +15,10 @@ mongoose.connect(
         const msg = err
             ? `${LOGMSG} Failed to connect to MongoDB: ${err}`
             : `${LOGMSG} MongoDB connection established successfully`
-        console.log(msg)
+        logger.info(msg)
     },
 )
 
-const app = express()
-
-app.use(express.json())
-app.use(morgan('tiny'))
-
-
-app.use('/api/v1', routes);
-
 app.listen(PORT, () => {
-    console.log(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
+    logger.info(`${LOGMSG} Server is running at ${HOST}:${PORT}`)
 })

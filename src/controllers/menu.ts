@@ -38,10 +38,10 @@ export default {
     try {
         const paramId = req.params.id;
         const menu = await Menu.findOne({ _id: req.params.id })
-        
+
         if (!menu || !menu?.id) {
           logger.info(`Menu item with id: ${paramId} was not found`)
-          return res.status(StatusCodes.BAD_REQUEST).json({ message: 'Menu Id not found' })
+          return res.status(StatusCodes.NOT_FOUND).json({ message: 'Menu item not found' })
         }
     
         await Menu.deleteOne({ id: menu.id })
