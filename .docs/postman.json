@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "53d3253c-6861-4874-9b25-15069e2e2965",
+		"_postman_id": "a10e70bb-78a1-4402-a92a-c029f62dbc20",
 		"name": "Live-Coding BoilerPlate",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3097218"
 	},
 	"item": [
 		{
@@ -109,6 +110,76 @@
 							"path": [
 								"user",
 								"6213814b8fa7b098be2fa480"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"menu name\",\n    \"relatedId\": \"parent id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/menu",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/menu/640120d11ea40cc9c1eb9864",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"640120d11ea40cc9c1eb9864"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/menu",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"menu"
 							]
 						}
 					},
