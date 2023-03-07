@@ -1,3 +1,4 @@
+
 # Desafio Backend
 
 Resolução do desafio proposto pela **Base39**, abaixo, contém as instruções para que seja possível executar a aplicação.
@@ -7,8 +8,10 @@ Resolução do desafio proposto pela **Base39**, abaixo, contém as instruções
 - Requisitos
 - Instalação
 - Modo de usar
+- Testes
 - Suporte
 - Contribuição
+- Observação
 
 ## Requisitos
 
@@ -91,6 +94,20 @@ curl --location --request DELETE 'http://localhost:8000/api/v1/menu/640120d11ea4
 
 É possível importar o arquivo `postman.json` que se encontra no diretório `/.docs` via `postman`. Após importar o mesmo, as rotas listadas acima, serão importadas no seu postman.
 
+## Testes
+
+Os testes do projeto encontram-se dentro da pasta `./test`, na qual utiliza as dependências `jest`. Para executar a suíte de teste execute o comando:
+
+### Subir o container do MongoDB:
+```sh
+docker-compose -f docker-compose-deps.yml up -d
+```
+
+### Executar os testes:
+```sh
+$ npm  test
+```
+
 ## Suporte
 
 Por favor [abra uma issue](https://github.com/rafamagalhas/desafio-api-menu/issues/new) para suporte. 
@@ -102,3 +119,18 @@ Por favor [abra uma issue](https://github.com/rafamagalhas/desafio-api-menu/issu
 3. Commit suas alterações (`git commit -am 'Add some feature'`).
 4. Faça um push de sua branch (`git push origin my-new-feature`).
 5. Crie uma nova [pull request](https://github.com/rafamagalhas/desafio-api-menu/pulls).
+
+## Observação
+
+Esse projeto utiliza o `husky` para executar algumas ações, uma delas é o `pre-push`. Ou seja, antes que o git push seja executado, os testes serão rodados.
+Como os testes necessitam de uma instância do MongoDB, com o intuito de serem mais eficazes, é importante que o container esteja no ar. Portanto quando for executar os testes ou subir alguma alteração, verifique:
+
+### Container em execução
+```sh 
+docker ps -a
+```
+
+### Executar o container com a dependencia
+```sh
+docker-compose -f docker-compose-deps.yml up -d
+```
