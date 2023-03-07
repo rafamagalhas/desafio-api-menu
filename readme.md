@@ -3,6 +3,8 @@
 
 Resolução do desafio proposto pela **Base39**, abaixo, contém as instruções para que seja possível executar a aplicação.
 
+Para essa resolução, foi utilizado o [boiler-plate](https://github.com/base39/entrevista-tecnica/tree/boilerplate/backend-desafio) disponibilizado pela **base39**.
+
 ## Conteúdo
 
 - Requisitos
