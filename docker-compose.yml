@@ -1,10 +1,26 @@
-version: '3.1'
+version: "3.1"
+
 services:
-    mongodb:
-        image : mongo
-        container_name: mongodb
-        volumes:
-            - /home/rafamagalhas/mongodb/database:/data/db
-        ports:
-            - 27017:27017
-        restart: unless-stopped
+  mongodb:
+    image : mongo
+    container_name: mongodb
+    volumes:
+      - /home/rafamagalhas/mongodb/database:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    container_name: desafio-api-menu
+    depends_on: 
+      - mongodb
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+      - PORT=8000
+    restart: always

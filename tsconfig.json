@@ -1,10 +1,29 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
-    "rootDir": "./",
-    "outDir": "./build",
+    "moduleResolution": "node",
+    
+    "allowJs": true,
+    "outDir": "./dist",
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "strict": true
-  }
+    
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    
+    "skipDefaultLibCheck": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+
+  ]
 }
