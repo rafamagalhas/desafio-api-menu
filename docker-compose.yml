@@ -21,6 +21,6 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - MONGO_URL=mongodb://mongodb:27017
+      - MONGO_URL=mongodb://mongodb:27017/apiMenus
       - PORT=8000
     restart: always
