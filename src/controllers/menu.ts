@@ -48,7 +48,7 @@ export default {
           return res.status(StatusCodes.NOT_FOUND).json({ message: 'Menu item not found' })
         }
     
-        await Menu.deleteOne({ id: menu.id })
+        await Menu.deleteOne({ _id: menu.id })
         return res.json({
           id: menu.id,
         })
