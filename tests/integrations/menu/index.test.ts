@@ -73,18 +73,18 @@ describe('/api/v1/menu endpoint', () => {
     expect(menuListResponse).toHaveProperty('body')
     expect(menuListResponse.body).toHaveLength(2)
     expect(menuListResponse.body[0]).toHaveProperty('name', 'Informática')
-    expect(menuListResponse.body[0].submenus).toHaveLength(0)
+    expect(menuListResponse.body[0].subMenus).toHaveLength(0)
     expect(menuListResponse.body[1]).toHaveProperty('name', 'Eletro')
-    expect(menuListResponse.body[1].submenus).toHaveLength(1)
-    expect(menuListResponse.body[1].submenus[0]).toHaveProperty('name', 'Televisão')
-    expect(menuListResponse.body[1].submenus[0].submenus).toHaveLength(1)
-    expect(menuListResponse.body[1].submenus[0].submenus[0]).toHaveProperty('name', 'LCD')
-    expect(menuListResponse.body[1].submenus[0].submenus[0].submenus).toHaveLength(0) 
+    expect(menuListResponse.body[1].subMenus).toHaveLength(1)
+    expect(menuListResponse.body[1].subMenus[0]).toHaveProperty('name', 'Televisão')
+    expect(menuListResponse.body[1].subMenus[0].subMenus).toHaveLength(1)
+    expect(menuListResponse.body[1].subMenus[0].subMenus[0]).toHaveProperty('name', 'LCD')
+    expect(menuListResponse.body[1].subMenus[0].subMenus[0].subMenus).toHaveLength(0) 
   })
 
   test('[DELETE] should return 200 when menu item was removed successful', async () => {
     const menuListResponse = await request(app).get('/api/v1/menu')
-    const idToDelete = menuListResponse.body[1].submenus[0]._id
+    const idToDelete = menuListResponse.body[1].subMenus[0].id
     const deleteResponse = await request(app).delete(`/api/v1/menu/${idToDelete}`)
 
     expect(deleteResponse).toHaveProperty('status', 200)
